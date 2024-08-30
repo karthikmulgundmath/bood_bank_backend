@@ -1,0 +1,356 @@
+{
+	"info": {
+		"_postman_id": "3accb7dd-1bc9-444d-b68f-fa9d740d2485",
+		"name": "blood_bank_management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24915962"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"shashi@gmail.com\",\r\n  \"password\": \"abcd1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:5000/api/auth/signup \\\r\n-H \"Content-Type: application/json\" \\\r\n-d '{\r\n  \"email\": \"user@example.com\",\r\n  \"password\": \"password123\"\r\n}'\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"shashi@gmail.com\",\r\n  \"password\": \"abcd1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:5000/api/auth/signin \\\r\n-H \"Content-Type: application/json\" \\\r\n-d '{\r\n  \"email\": \"user@example.com\",\r\n  \"password\": \"password123\"\r\n}'\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "add requests",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer YOUR_ACCESS_TOKEN"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"key1\": \"value1\",\r\n  \"key2\": \"value2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/requests",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"requests"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:5000/api/requests \\\r\n-H \"Content-Type: application/json\" \\\r\n-H \"Authorization: Bearer YOUR_ACCESS_TOKEN\" \\\r\n-d '{\r\n  \"key1\": \"value1\",\r\n  \"key2\": \"value2\"\r\n}'\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "get requests",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZDE3NjQwZjkyMDVjODZkMmY5ZDkzMyIsImlhdCI6MTcyNTAwMzMzMiwiZXhwIjoxNzI1MDA2OTMyfQ.UigZ1pVPkw6TQSBTjRusMzLkuOhVfRUDorf812TXfIc"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/requests",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"requests"
+					]
+				},
+				"description": "Generated from cURL: curl --location 'http://localhost:5000/api/requests' \\\r\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZDE3NjQwZjkyMDVjODZkMmY5ZDkzMyIsImlhdCI6MTcyNTAwMzMzMiwiZXhwIjoxNzI1MDA2OTMyfQ.UigZ1pVPkw6TQSBTjRusMzLkuOhVfRUDorf812TXfIc'\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "update requests",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZDE3NjQwZjkyMDVjODZkMmY5ZDkzMyIsImlhdCI6MTcyNTAwMzMzMiwiZXhwIjoxNzI1MDA2OTMyfQ.UigZ1pVPkw6TQSBTjRusMzLkuOhVfRUDorf812TXfIc"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"updatedName\",\r\n    \"location\": \"updatedLocation\",\r\n    \"request\": 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/requests/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"requests",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Generated from cURL: curl --location --request PUT 'http://localhost:5000/api/requests/:id' \\\r\n--header 'Content-Type: application/json' \\\r\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZDE3NjQwZjkyMDVjODZkMmY5ZDkzMyIsImlhdCI6MTcyNTAwMzMzMiwiZXhwIjoxNzI1MDA2OTMyfQ.UigZ1pVPkw6TQSBTjRusMzLkuOhVfRUDorf812TXfIc' \\\r\n--data '{\r\n    \"name\": \"updatedName\",\r\n    \"location\": \"updatedLocation\",\r\n    \"request\": 10\r\n}'\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "delete requests",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZDE3NjQwZjkyMDVjODZkMmY5ZDkzMyIsImlhdCI6MTcyNTAwMzMzMiwiZXhwIjoxNzI1MDA2OTMyfQ.UigZ1pVPkw6TQSBTjRusMzLkuOhVfRUDorf812TXfIc"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/requests/66d176b3e598e92a77e94375",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"requests",
+						"66d176b3e598e92a77e94375"
+					]
+				},
+				"description": "Generated from cURL: curl --location --request DELETE 'http://localhost:5000/api/requests/:id' \\\r\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZDE3NjQwZjkyMDVjODZkMmY5ZDkzMyIsImlhdCI6MTcyNTAwMzMzMiwiZXhwIjoxNzI1MDA2OTMyfQ.UigZ1pVPkw6TQSBTjRusMzLkuOhVfRUDorf812TXfIc'\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "add donors",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZDE3NjQwZjkyMDVjODZkMmY5ZDkzMyIsImlhdCI6MTcyNTAwMzMzMiwiZXhwIjoxNzI1MDA2OTMyfQ.UigZ1pVPkw6TQSBTjRusMzLkuOhVfRUDorf812TXfIc"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Jane Smith\",\r\n    \"age\": 28,\r\n    \"gender\": \"Female\",\r\n    \"location\": \"Los Angeles\",\r\n    \"bloodType\": \"A+\",\r\n    \"availableOn\": \"2024-09-15T09:00:00Z\",\r\n    \"slot\": \"Afternoon\",\r\n    \"medicalHistory\": \"None\",\r\n    \"donationEligibility\": \"Eligible\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/donors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"donors"
+					]
+				},
+				"description": "Generated from cURL: curl --location --request POST 'http://localhost:5000/api/donors' \\\r\n--header 'Content-Type: application/json' \\\r\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZDE3NjQwZjkyMDVjODZkMmY5ZDkzMyIsImlhdCI6MTcyNTAwMzMzMiwiZXhwIjoxNzI1MDA2OTMyfQ.UigZ1pVPkw6TQSBTjRusMzLkuOhVfRUDorf812TXfIc' \\\r\n--data '{\r\n    \"name\": \"Jane Smith\",\r\n    \"age\": 28,\r\n    \"gender\": \"Female\",\r\n    \"location\": \"Los Angeles\",\r\n    \"bloodType\": \"A+\",\r\n    \"availableOn\": \"2024-09-15T09:00:00Z\",\r\n    \"slot\": \"Afternoon\",\r\n    \"medicalHistory\": \"None\",\r\n    \"donationEligibility\": \"Eligible\"\r\n}'\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "get donors",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZDE3NjQwZjkyMDVjODZkMmY5ZDkzMyIsImlhdCI6MTcyNTAwMzMzMiwiZXhwIjoxNzI1MDA2OTMyfQ.UigZ1pVPkw6TQSBTjRusMzLkuOhVfRUDorf812TXfIc"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/donors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"donors"
+					]
+				},
+				"description": "Generated from cURL: curl --location 'http://localhost:5000/api/donors' \\\r\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZDE3NjQwZjkyMDVjODZkMmY5ZDkzMyIsImlhdCI6MTcyNTAwMzMzMiwiZXhwIjoxNzI1MDA2OTMyfQ.UigZ1pVPkw6TQSBTjRusMzLkuOhVfRUDorf812TXfIc'\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "update donors",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZDE3NjQwZjkyMDVjODZkMmY5ZDkzMyIsImlhdCI6MTcyNTAwMzMzMiwiZXhwIjoxNzI1MDA2OTMyfQ.UigZ1pVPkw6TQSBTjRusMzLkuOhVfRUDorf812TXfIc"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"age\": 30,\r\n    \"gender\": \"Male\",\r\n    \"location\": \"New York\",\r\n    \"bloodType\": \"O+\",\r\n    \"availableOn\": \"2024-08-31T10:00:00Z\",\r\n    \"slot\": \"Morning\",\r\n    \"medicalHistory\": \"None\",\r\n    \"donationEligibility\": \"Eligible\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/donors/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"donors",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Generated from cURL: curl --location --request PUT 'http://localhost:5000/api/donors/:id' \\\r\n--header 'Content-Type: application/json' \\\r\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZDE3NjQwZjkyMDVjODZkMmY5ZDkzMyIsImlhdCI6MTcyNTAwMzMzMiwiZXhwIjoxNzI1MDA2OTMyfQ.UigZ1pVPkw6TQSBTjRusMzLkuOhVfRUDorf812TXfIc' \\\r\n--data '{\r\n    \"name\": \"John Doe\",\r\n    \"age\": 30,\r\n    \"gender\": \"Male\",\r\n    \"location\": \"New York\",\r\n    \"bloodType\": \"O+\",\r\n    \"availableOn\": \"2024-08-31T10:00:00Z\",\r\n    \"slot\": \"Morning\",\r\n    \"medicalHistory\": \"None\",\r\n    \"donationEligibility\": \"Eligible\"\r\n}'\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "delete donors",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZDE3NjQwZjkyMDVjODZkMmY5ZDkzMyIsImlhdCI6MTcyNTAwMzMzMiwiZXhwIjoxNzI1MDA2OTMyfQ.UigZ1pVPkw6TQSBTjRusMzLkuOhVfRUDorf812TXfIc"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/donors/66d178445d1c5d3f41c81184",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"donors",
+						"66d178445d1c5d3f41c81184"
+					]
+				},
+				"description": "Generated from cURL: curl --location --request DELETE 'http://localhost:5000/api/donors/:id' \\\r\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZDE3NjQwZjkyMDVjODZkMmY5ZDkzMyIsImlhdCI6MTcyNTAwMzMzMiwiZXhwIjoxNzI1MDA2OTMyfQ.UigZ1pVPkw6TQSBTjRusMzLkuOhVfRUDorf812TXfIc'\r\n"
+			},
+			"response": []
+		}
+	]
+}
