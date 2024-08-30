@@ -1,9 +1,12 @@
+// src/index.ts
 import { config } from "dotenv";
 import express from "express";
 import morgan from "morgan";
 import helmet from "helmet";
 import cors from "cors";
 import mongoose from "mongoose";
+import requestRoutes from "./routes/donorRoutes";
+import donorRoutes from "./routes/donorRoutes";
 
 config();
 
@@ -26,6 +29,10 @@ mongoose
   .catch((err) => {
     console.error("Error connecting to MongoDB", err);
   });
+
+// Routes
+app.use("/api/requests", requestRoutes);
+app.use("/api/donors", donorRoutes);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
