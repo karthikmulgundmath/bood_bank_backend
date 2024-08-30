@@ -1,4 +1,3 @@
-// src/models/Donor.ts
 import mongoose, { Schema, Document } from "mongoose";
 
 interface IDonor extends Document {

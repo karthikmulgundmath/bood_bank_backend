@@ -1,12 +1,13 @@
-// src/index.ts
 import { config } from "dotenv";
 import express from "express";
 import morgan from "morgan";
 import helmet from "helmet";
 import cors from "cors";
 import mongoose from "mongoose";
-import requestRoutes from "./routes/donorRoutes";
+import requestRoutes from "./routes/requestRouter";
 import donorRoutes from "./routes/donorRoutes";
+import authRoutes from "./routes/authRoutes";
+import authenticateToken from "./middleware/authMiddleware";
 
 config();
 
@@ -22,21 +23,22 @@ app.use(express.json());
 const dbUrl = process.env.MONGO_URL || "mongodb://localhost:27017/blood_bank_management";
 
 mongoose
-  .connect(dbUrl)
-  .then(() => {
-    console.log("Connected to MongoDB");
-  })
-  .catch((err) => {
-    console.error("Error connecting to MongoDB", err);
-  });
+    .connect(dbUrl)
+    .then(() => {
+        console.log("Connected to MongoDB");
+    })
+    .catch((err) => {
+        console.error("Error connecting to MongoDB", err);
+    });
 
-// Routes
-app.use("/api/requests", requestRoutes);
-app.use("/api/donors", donorRoutes);
+// Apply authentication middleware to specific routes
+app.use("/api/auth", authRoutes);
+app.use("/api/requests", authenticateToken, requestRoutes);
+app.use("/api/donors", authenticateToken, donorRoutes);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+    console.log(`Server is running on port ${port}`);
 });
 
 export default app;

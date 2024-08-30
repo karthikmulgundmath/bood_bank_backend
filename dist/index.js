@@ -9,6 +9,10 @@ const morgan_1 = __importDefault(require("morgan"));
 const helmet_1 = __importDefault(require("helmet"));
 const cors_1 = __importDefault(require("cors"));
 const mongoose_1 = __importDefault(require("mongoose"));
+const requestRouter_1 = __importDefault(require("./routes/requestRouter"));
+const donorRoutes_1 = __importDefault(require("./routes/donorRoutes"));
+const authRoutes_1 = __importDefault(require("./routes/authRoutes"));
+const authMiddleware_1 = __importDefault(require("./middleware/authMiddleware"));
 (0, dotenv_1.config)();
 const app = (0, express_1.default)();
 // Middleware setup
@@ -26,7 +30,11 @@ mongoose_1.default
     .catch((err) => {
     console.error("Error connecting to MongoDB", err);
 });
-const port = process.env.PORT || 3000;
+// Routes
+app.use("/api/auth", authRoutes_1.default);
+app.use("/api/requests", authMiddleware_1.default, requestRouter_1.default); // Protect routes with authentication
+app.use("/api/donors", authMiddleware_1.default, donorRoutes_1.default); // Protect routes with authentication
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });

@@ -1,69 +1,55 @@
-// src/routes/donorRoutes.ts
-import express from "express";
-import Donor from "../models/Donor";
+import { Router } from "express";
+import { Request, Response } from "express";
+import DonorModel from "../models/Donor";
+import authenticateToken from "../middleware/authMiddleware";
 
-const router = express.Router();
+const router = Router();
 
-// Create a new donor
-router.post("/", async (req, res) => {
-  try {
-    const newDonor = new Donor(req.body);
-    await newDonor.save();
-    res.status(201).json(newDonor);
-  } catch (error) {
-    res.status(500).json({ error: "Failed to create donor" });
-  }
-});
+router.use(authenticateToken);
 
-// Get all donors
-router.get("/", async (req, res) => {
-  try {
-    const donors = await Donor.find();
-    res.status(200).json(donors);
-  } catch (error) {
-    res.status(500).json({ error: "Failed to retrieve donors" });
-  }
-});
-
-// Get a specific donor by ID
-router.get("/:id", async (req, res) => {
-  try {
-    const donor = await Donor.findById(req.params.id);
-    if (!donor) {
-      return res.status(404).json({ error: "Donor not found" });
+router.post("/", async (req: Request, res: Response) => {
+    const donorData = req.body;
+    try {
+        const newDonor = new DonorModel(donorData);
+        await newDonor.save();
+        res.status(201).json(newDonor);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
     }
-    res.status(200).json(donor);
-  } catch (error) {
-    res.status(500).json({ error: "Failed to retrieve donor" });
-  }
 });
 
-// Update a donor by ID
-router.put("/:id", async (req, res) => {
-  try {
-    const updatedDonor = await Donor.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
-    if (!updatedDonor) {
-      return res.status(404).json({ error: "Donor not found" });
+router.get("/", async (req: Request, res: Response) => {
+    try {
+        const donors = await DonorModel.find();
+        res.status(200).json(donors);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
     }
-    res.status(200).json(updatedDonor);
-  } catch (error) {
-    res.status(500).json({ error: "Failed to update donor" });
-  }
 });
 
-// Delete a donor by ID
-router.delete("/:id", async (req, res) => {
-  try {
-    const deletedDonor = await Donor.findByIdAndDelete(req.params.id);
-    if (!deletedDonor) {
-      return res.status(404).json({ error: "Donor not found" });
+router.put("/:id", async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const donorData = req.body;
+    try {
+        const updatedDonor = await DonorModel.findByIdAndUpdate(
+            id,
+            donorData,
+            { new: true }
+        );
+        res.status(200).json(updatedDonor);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
     }
-    res.status(200).json({ message: "Donor deleted successfully" });
-  } catch (error) {
-    res.status(500).json({ error: "Failed to delete donor" });
-  }
+});
+
+router.delete("/:id", async (req: Request, res: Response) => {
+    const { id } = req.params;
+    try {
+        await DonorModel.findByIdAndDelete(id);
+        res.status(204).end();
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
 });
 
 export default router;
